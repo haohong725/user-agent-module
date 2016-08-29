@@ -1,2 +1,5 @@
 /vendor
 .env
+/.idea
+/public/static/swagger/.DS_Store
+.DS_Store
