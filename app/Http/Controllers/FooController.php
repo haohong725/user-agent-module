@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Utils\MoMobileDetect;
+use Illuminate\Http\Request;
+use Jenssegers\Agent\Agent;
 
 
 /**
@@ -9,8 +12,15 @@ namespace App\Http\Controllers;
 
 class FooController extends Controller
 {
-    public function bar()
+    public function bar(Request $request)
     {
-        return "scccess";
+        $ua = $request->getContent();
+        
+        $detect = new MoMobileDetect();
+        $detect->setUserAgent($ua);
+
+        $info = $detect->info();
+
+        dd($info);
     }
 }
